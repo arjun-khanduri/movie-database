@@ -18,7 +18,8 @@ class App extends React.Component {
         imdbRating: '',
         Collection: ''
       }
-    ]
+    ],
+    showCard: false
   }
 
   searchText = (e) => {
@@ -47,7 +48,8 @@ class App extends React.Component {
             Plot: movie.Plot,
             imdbRating: movie.imdbRating,
             Collection: movie.BoxOffice
-          }]
+          }],
+          showCard: true
         })
       })
   }
@@ -61,11 +63,16 @@ class App extends React.Component {
             <button id="search-btn" onClick={this.search}>Search</button>
           </div>
         </div>
-        
         <div className="main">
-          <div className="list">
-            <Card movie={this.state.movie} />
-          </div>
+          {this.state.showCard ?
+            <div className="list">
+              <Card movie={this.state.movie} />
+            </div>
+            :
+            <div className="no-movies">
+              Search for a title in the search box above
+            </div>
+          }
         </div>
       </div>
     );

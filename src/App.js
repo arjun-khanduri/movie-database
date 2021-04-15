@@ -31,10 +31,6 @@ class App extends React.Component {
     fetch(url)
       .then(response => response.json())
       .then(movie => {
-        console.log(movie);
-        console.log(typeof (movie));
-        console.log(movie.Actors);
-        console.log(movie.Title);
         this.setState({
           movie: [{
             Title: movie.Title,
@@ -54,13 +50,18 @@ class App extends React.Component {
       })
   }
 
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter')
+      this.search();
+  }
+
   render() {
     return (
       <div className="App">
         <div className="nav">
           <div className="search-container">
-            <input type="text" onChange={this.searchText} />
-            <button id="search-btn" onClick={this.search}>Search</button>
+            <input type="text" onChange={this.searchText} onKeyPress={this.handleKeyPress} />
+            <button id="search-btn" onClick={this.search} ref={node => (this.btn = node)} >Search</button>
           </div>
         </div>
         <div className="main">

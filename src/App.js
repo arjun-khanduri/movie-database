@@ -15,7 +15,8 @@ class App extends React.Component {
         Runtime: '',
         Poster: '',
         Plot: '',
-        imdbRating: ''
+        imdbRating: '',
+        Collection: ''
       }
     ]
   }
@@ -44,7 +45,8 @@ class App extends React.Component {
             Runtime: movie.Runtime,
             Poster: movie.Poster,
             Plot: movie.Plot,
-            imdbRating: movie.imdbRating
+            imdbRating: movie.imdbRating,
+            Collection: movie.BoxOffice
           }]
         })
       })
@@ -53,11 +55,18 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <input type="text" onChange={this.searchText} />
-        <button onClick={this.search}>Click</button>
-        <p>{this.state.movie[0].Title}</p>
-        <p>{this.state.movie[0].Actors}</p>
-        <Card />
+        <div className="nav">
+          <div className="search-container">
+            <input type="text" onChange={this.searchText} />
+            <button id="search-btn" onClick={this.search}>Search</button>
+          </div>
+        </div>
+        
+        <div className="main">
+          <div className="list">
+            <Card movie={this.state.movie} />
+          </div>
+        </div>
       </div>
     );
   }

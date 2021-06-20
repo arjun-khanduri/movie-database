@@ -4,20 +4,6 @@ class Card extends React.Component {
     render() {
         const { movie } = this.props;
         return (
-            // <div className="movie-card">
-            //     <div className="left">
-            //         <img alt="movie-poster" src={movie[0].Poster}/>
-            //     </div>
-            //     <div className="right">
-            //         <div className="title">{movie[0].Title}</div>
-            //         <div className="plot">{movie[0].Plot}</div>
-            //     </div>
-            //     <div className="footer">
-            //         <div className="rating">{movie[0].imdbRating}</div>
-            //     </div>
-            // </div>
-
-
             <div className="movie-card">
                 <div className="left">
                     <img alt="movie-poster" src={movie[0].Poster} />
@@ -30,8 +16,6 @@ class Card extends React.Component {
                     <div className="plot">
                         <strong>Genre: </strong>
                         {movie[0].Genre}
-                        {/* {movie[0].Genre.join(', ')} */}
-                        {/* {movie.genre.map((g) => <li>{g}</li>)} */}
                     </div>
                     <div className="plot">
                         <strong>Plot: </strong>{movie[0].Plot}

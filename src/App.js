@@ -2,24 +2,38 @@ import React from 'react';
 import Card from './Card';
 
 class App extends React.Component {
-  state = {
-    result: '',
-    movie: [
-      {
-        Title: '',
-        Year: '',
-        Actors: '',
-        Genre: '',
-        Language: '',
-        Director: '',
-        Runtime: '',
-        Poster: '',
-        Plot: '',
-        imdbRating: '',
-        Collection: ''
-      }
-    ],
-    showCard: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      apiResponse: '',
+      result: '',
+      movie: [
+        {
+          Title: '',
+          Year: '',
+          Actors: '',
+          Genre: '',
+          Language: '',
+          Director: '',
+          Runtime: '',
+          Poster: '',
+          Plot: '',
+          imdbRating: '',
+          Collection: ''
+        }
+      ],
+      showCard: false
+    }
+  }
+
+  callAPI(){
+    fetch('http://localhost:9000/testAPI')
+    .then(res => res.text())
+    .then(res => this.setState({apiResponse: res}))
+  }
+
+  componentDidMount() {
+    this.callAPI();
   }
 
   searchText = (e) => {
@@ -71,6 +85,7 @@ class App extends React.Component {
             </div>
             :
             <div className="no-movies">
+              {this.state.apiResponse}
               Search for a title in the search box above
             </div>
           }
